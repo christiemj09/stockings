@@ -3,6 +3,12 @@ import glob
 import os
 
 def get_stocks(path):
+    """Finds comma-separated values in a path and, assuming they are
+      named consistently, provides a dictionary with a stock symbol
+      and its respective file name.
+    :param path: string that is the directory to be search.
+    :return: dictionary of stock symbols and their file name.
+    """
     filenames = glob.glob('%s/*.csv' % (path, ))
     # TODO: verify naming scheme of CSV files (I don't have access RN)
     return {os.path.basename(x).split('.')[1]: x for x in filenames}
