@@ -29,10 +29,9 @@ def read_stock(path):
         stock['growthrates'] = {}
         for line in data[12:17]:
             stock['growthrates'][line[0]] = line[1]
-        stock['annualinfo'] = {}
         stock['dates'] = [datetime.strptime('%b%Y', x) for x in data[20]]
         for line in data[21:]:
-            stock[line[0]] = line[1:]
+            stock[line[0]] = [float(x) for x in line[1:]]
 
         return stock
     else:
