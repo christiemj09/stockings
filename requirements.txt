@@ -1,0 +1,4 @@
+# Some probably good-to-have dependencies.
+pandas
+psycopg2
+sqlalchemy
