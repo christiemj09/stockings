@@ -35,9 +35,20 @@ def read_stock(path):
         stock['growthrates'] = {}
         for line in data[12:17]:
             stock['growthrates'][line[0]] = line[1]
-        stock['dates'] = [datetime.strptime('%b%Y', x) for x in data[20]]
+
+        stock['annual'] = {}
+        stock['annual']['dates'] = [datetime.strptime('%b%Y', x) for x in data[20][1:31]]
+        # Right now we skip the TTM/current since it doesn't follow the same month.
+        #   To include it, uncomment the immedately following line and change the
+        #   loop under it to extend to 32.
+        #stock['annual']['dates'].append(datetime.strptime('%b%Y', 'Jan2017'))
         for line in data[21:]:
-            stock[line[0]] = [float(x) for x in line[1:]]
+            stock['annual'][line[0]] = [float(x) for x in line[1:31]]
+
+        stock['quarterly'] = {}
+        stock['quarterly']['dates'] = [datetime.strptime('%b%Y', x) for x in data[20][33:]]
+        for line in data[21]:
+            stock['quarterly'][line[0]] = [float(x) for x in line[33:]]
 
         return stock
     else:
