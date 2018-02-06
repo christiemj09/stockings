@@ -16,6 +16,7 @@ def read_stock(path):
     """
     f = open(path, 'r')
     data = [x.split(',') for x in f.readlines()]
+    f.close()
 
     stock = {}
     if 'Key Statistics' in data[3]:
