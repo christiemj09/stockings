@@ -1,0 +1,4 @@
+{
+    "uploads": ["stock", "keystat", "growthrate", "annual", "quarterly"],
+    "chunksize": 50000
+}

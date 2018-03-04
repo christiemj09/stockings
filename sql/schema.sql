@@ -1,5 +1,6 @@
 -- Schema definition for the stocks database.
 
+DROP TABLE IF EXISTS stock CASCADE;
 CREATE TABLE stock (
 
     -- Top-level stocks key (e.g. STOCK)
@@ -11,6 +12,7 @@ CREATE TABLE stock (
     sector TEXT
 );
 
+DROP TABLE IF EXISTS keystat CASCADE;
 CREATE TABLE keystat (
 
     -- Top-level stocks key (e.g. STOCK)
@@ -24,6 +26,7 @@ CREATE TABLE keystat (
     downloaded TIMESTAMP
 );
 
+DROP TABLE IF EXISTS growthrate CASCADE;
 CREATE TABLE growthrate (
 
     -- Top-level stocks key (e.g. STOCK)
@@ -37,6 +40,7 @@ CREATE TABLE growthrate (
     downloaded TIMESTAMP
 );
 
+DROP TABLE IF EXISTS annual CASCADE;
 CREATE TABLE annual (
 
     -- Top-level stocks key (e.g. STOCK)
@@ -48,6 +52,7 @@ CREATE TABLE annual (
     val NUMERIC
 );
 
+DROP TABLE IF EXISTS quarterly CASCADE;
 CREATE TABLE quarterly (
 
     -- Top-level stocks key (e.g. STOCK)

@@ -3,3 +3,7 @@ pandas
 psycopg2
 sqlalchemy
 requests
+# Enables easy SQLAlchemy connection
+-e git+https://github.com/christiemj09/ringmaster.git@2da91bb0d7b81295e3a7b52146f29aa95a79ae61#egg=ringmaster
+# Configure runs of Python scripts
+-e git+https://github.com/christiemj09/config.git@44a92cf560b0b509df926b302fa2d19131f24e19#egg=config

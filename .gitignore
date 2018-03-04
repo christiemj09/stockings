@@ -5,3 +5,5 @@ csv_stock_data
 venv/
 *.egg-info
 __pycache__
+creds
+.creds
