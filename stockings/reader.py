@@ -40,10 +40,10 @@ def read_stock(path):
     stock['sector'] = data[1][2]
     stock['keystats'] = {}
     for line in data[start+1:start+7]:
-        stock['keystats'][line[0]] = line[1]
+        stock['keystats'][line[0].lstrip().rstrip()] = line[1]
     stock['growthrates'] = {}
     for line in data[start+9:start+14]:
-        stock['growthrates'][line[0]] = line[1]
+        stock['growthrates'][line[0].lstrip().rstrip()] = line[1]
 
     # Set up regex patterns for type testing
     floats = re.compile(u"^[-]?[0-9]+.[0-9]+$").search
@@ -57,13 +57,13 @@ def read_stock(path):
     #   loop under it to extend to 32.
     #stock['annual']['dates'].append(datetime.strptime('%b%Y', 'Jan2017'))
     for line in data[start+18:]:
-        stock['annual'][line[0]] = [float(x.strip('\r\n')) if floats(x) else float('nan') for x in line[1:31]]
+        stock['annual'][line[0].lstrip().rstrip()] = [float(x.strip('\r\n')) if floats(x) else float('nan') for x in line[1:31]]
 
     # Parse quarterly data
     stock['quarterly'] = {}
     stock['quarterly']['dates'] = [datetime.datetime.strptime(x.strip('\r\n'), '%b%Y') for x in data[start+17][33:]]
     for line in data[start+18:]:
-        stock['quarterly'][line[0]] = [float(x.strip('\r\n')) if floats(x) else float('nan') for x in line[33:]]
+        stock['quarterly'][line[0].lstrip().rstrip()] = [float(x.strip('\r\n')) if floats(x) else float('nan') for x in line[33:]]
 
     return stock
 
